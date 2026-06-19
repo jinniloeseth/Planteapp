@@ -8,7 +8,7 @@ namespace backend.Models
         public string? Notes { get; set; }
         public DateTime? LastWatered { get; set; }
         public int? SpeciesId { get; set; }
-        public Species Species { get; set; }
+        public Species? Species { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
