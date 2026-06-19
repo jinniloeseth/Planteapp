@@ -20,7 +20,9 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Plant>>> GetPlants()
         {
-            return await _context.Plants.ToListAsync();
+            return await _context.Plants
+                .Include(p => p.Species)
+                .ToListAsync();
         }
 
         // Hent plante ved en gitt id

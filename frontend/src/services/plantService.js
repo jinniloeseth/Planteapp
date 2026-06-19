@@ -1,5 +1,13 @@
-const BASE_URL = "http://localhost:5053/api/plants";
+const BASE_URL = `${process.env.REACT_APP_API_URL}/plants`;
+const SPECIES_URL = `${process.env.REACT_APP_API_URL}/species`;
 
+//SPECIES 
+export const getSpecies = async () => {
+    const response = await fetch(SPECIES_URL);
+    return response.json();
+};
+
+//PLANTS
 export const getPlants = async () => {
     const response = await fetch(BASE_URL);
     return response.json();
@@ -11,6 +19,7 @@ export const getPlant = async (id) => {
 };
 
 export const createPlant = async (plant) => {
+    console.log("Sender plant:", JSON.stringify(plant));
     const response = await fetch(BASE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
