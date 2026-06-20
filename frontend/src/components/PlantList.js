@@ -24,7 +24,6 @@ function PlantList() {
        <div className="app-container">
             <h2>Mine planter</h2>
             {message && <p className="success-message">{message}</p>}
-            <button onClick={() => navigate("/add")}>Legg til plante</button>
             {plants.map(plant => (
                 <div className="plant-card" key={plant.id}>
                     <button className="delete-button" onClick={() => handleDelete(plant.id)}>

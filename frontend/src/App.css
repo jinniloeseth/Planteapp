@@ -99,7 +99,7 @@ input:focus, select:focus {
 .app-container {
   max-width: 480px;
   margin: 0 auto;
-  padding: 20px 16px;
+  padding: 10px 16px;
 }
 
 /* tilbake knapp */
@@ -131,3 +131,62 @@ input:focus, select:focus {
   margin-bottom: 12px;
 }
 
+/* menylinjen øverst */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  background-color: #4A7856;
+  padding: 16px;
+  border-bottom: 1px solid #D8D2C4;
+  z-index: 10;
+}
+
+.topbar-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.topbar-logo {
+  width: 28px;
+  height: 28px;
+}
+
+/* bunnlinje meny */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid #D8D2C4;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 10;
+}
+
+.bottom-bar-item {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  color: #888780;
+  cursor: pointer;
+}
+
+.bottom-bar-item.active {
+  color: #4A7856;
+}
+
+.app-container {
+  padding-bottom: 70px;
+}
+
+.bottom-bar-item i {
+  font-size: 22px;
+}
