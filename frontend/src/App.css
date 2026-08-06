@@ -1,0 +1,379 @@
+body {
+  background-color: #F4F1EA;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #2B3A2F;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.auth-logo {
+  font-size: 64px;
+  margin-bottom: 8px;
+}
+
+.auth-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #2B3A2F;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  border: 1px solid #D8D2C4;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  background-color: white;
+  color: #2B3A2F;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4A7856;
+  box-shadow: 0 0 0 2px rgba(74, 120, 86, 0.2);
+}
+
+button {
+  background-color: #4A7856;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #3B6244;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+
+.auth-switch span {
+  color: #4A7856;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+  max-width: 300px;
+  margin-bottom: 24px;
+}
+
+.options-list {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-item {
+  background: white;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.option-label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.toggle {
+  width: 44px;
+  height: 24px;
+  background-color: #D8D2C4;
+  border-radius: 12px;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.toggle-on {
+  background-color: #4A7856;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-on .toggle-knob {
+  transform: translateX(20px);
+}
+
+.request-link {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #4A7856;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.popup {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup h3 {
+  margin: 0;
+}
+
+textarea {
+  border: 1px solid #D8D2C4;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  resize: none;
+  font-family: inherit;
+}
+
+.options-section-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 8px 0 4px 4px;
+}
+
+.option-locked {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.toggle-disabled {
+    pointer-events: none;
+}
+
+.cta-button {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 24px;
+}
+
+/*home page*/
+
+.page-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 80px 16px;
+}
+
+.plant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.plant-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+.plant-card-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
+
+.plant-card-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #888;
+}
+
+.plant-watered {
+    margin-top: 6px !important;
+    color: #4A7856 !important;
+}
+
+.plant-card-arrow {
+    font-size: 22px;
+    color: #ccc;
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #D8D2C4;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.bottom-bar-item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px;
+    color: #888;
+    cursor: pointer;
+    width: auto;
+    padding: 4px 12px;
+}
+
+.bottom-bar-item.active {
+    color: #4A7856;
+}
+
+/* plant page */
+
+.plant-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.plant-detail-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: auto;
+}
+
+.plant-detail-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.plant-detail-emoji {
+    font-size: 80px;
+    margin-bottom: 12px;
+}
+
+.plant-detail-hero h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.plant-detail-species {
+    color: #888;
+    font-size: 14px;
+    margin: 4px 0 0 0;
+}
+
+.plant-detail-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.detail-card {
+    background: white;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.detail-card-label {
+    font-size: 14px;
+    color: #888;
+}
+
+.detail-card-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2B3A2F;
+}
+
+.water-button {
+    width: 100%;
+    background-color: #3B82C4;
+    font-size: 16px;
+    padding: 14px;
+}
+
+.water-button:hover {
+    background-color: #2D6BA8;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #4A7856;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    width: auto;
+}
