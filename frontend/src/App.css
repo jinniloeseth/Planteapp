@@ -377,3 +377,163 @@ textarea {
     padding: 0;
     width: auto;
 }
+
+/*watering page*/
+
+.watering-section {
+    margin-bottom: 24px;
+}
+
+.watering-section-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    margin: 0 0 8px 4px;
+}
+
+.watering-card {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.watering-card-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 15px;
+}
+
+.watering-card-info p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.water-now-button {
+    background: #EAF3DE;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    padding: 8px 10px;
+    cursor: pointer;
+    width: auto;
+}
+
+/* create plant*/
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 80px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #2B3A2F;
+}
+
+/* settings */
+
+.settings-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+}
+
+.settings-avatar {
+    font-size: 48px;
+    width: 64px;
+    height: 64px;
+    background: #EAF3DE;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-profile-info {
+    flex: 1;
+}
+
+.settings-name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-name-row h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.settings-edit-link {
+    font-size: 13px;
+    color: #4A7856;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.settings-username {
+    margin: 2px 0 0 0;
+    font-size: 13px;
+    color: #888;
+}
+
+.settings-name-edit {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.settings-name-edit input {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 15px;
+}
+
+.settings-name-edit button {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.settings-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.settings-arrow {
+    font-size: 20px;
+    color: #ccc;
+}
