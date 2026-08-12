@@ -1,27 +1,35 @@
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getPlant } from "../../services/plantService";
+import { getUserSettings } from "../../services/userSettingsService";
+import { waterPlant } from "../../services/plantService";
 
 function PlantPage() {
     const navigate = useNavigate();
+    const { id } = useParams();
 
-    // Dummy-data for nå
-    const plant = {
-        id: 1,
-        name: "Monstera",
-        species: "Monstera Deliciosa",
-        lastWatered: "2026-08-01",
-        location: "Stua",
-        purchaseDate: "2026-01-15",
-        notes: "Liker ikke direkte sol",
-    };
+    const [plant, setPlant] = useState(null);
+    const [userSettings, setUserSettings] = useState(null);
 
-    // Dummy UserSettings
-    const userSettings = {
-        showName: true,
-        showSpecies: true,
-        showWatering: true,
-        showLocation: true,
-        showPurchaseDate: false,
-        showNotes: true,
+    useEffect(() => {
+        const userId = localStorage.getItem("userId");
+        if (userId) {
+            getPlant(userId, id).then(data => {
+            console.log("Plant:", data);
+            setPlant(data);
+            });
+            getUserSettings(userId).then(data => {
+                console.log("UserSettings:", data);
+                setUserSettings(data);
+            });
+        }
+    }, [id]);
+
+    if (!plant || !userSettings) return <p>Laster...</p>;
+
+    const handleWater = async () => {
+        await waterPlant(plant.id);
+        setPlant({ ...plant, lastWatered: new Date().toISOString() });
     };
 
     return (
@@ -37,18 +45,31 @@ function PlantPage() {
 
             <div className="plant-detail-hero">
                 <div className="plant-detail-emoji">🌿</div>
-                <h1>{userSettings.showName && plant.name ? plant.name : plant.species}</h1>
+                <h1>{userSettings.showName && plant.name ? plant.name : plant.species?.name}</h1>
                 {userSettings.showName && plant.name && (
-                    <p className="plant-detail-species">{plant.species}</p>
+                    <p className="plant-detail-species">{plant.species?.name}</p>
                 )}
             </div>
 
             <div className="plant-detail-cards">
 
-                {userSettings.showWatering && (
+               {/* Alltid vis vanning */}
+                <div className="detail-card">
+                    <span className="detail-card-label">💧 Sist vannet</span>
+                    <span className="detail-card-value">{plant.lastWatered || "Ikke registrert"}</span>
+                </div>
+
+                {/* Alltid vis art */}
+                <div className="detail-card">
+                    <span className="detail-card-label">🌿 Art</span>
+                    <span className="detail-card-value">{plant.species?.name || "Ikke registrert"}</span>
+                </div>
+
+                {/* Valgfrie felt */}
+                {userSettings.showName && (
                     <div className="detail-card">
-                        <span className="detail-card-label">💧 Sist vannet</span>
-                        <span className="detail-card-value">{plant.lastWatered || "Ikke registrert"}</span>
+                        <span className="detail-card-label">🪴 Navn</span>
+                        <span className="detail-card-value">{plant.name || "Ikke registrert"}</span>
                     </div>
                 )}
 
@@ -75,7 +96,7 @@ function PlantPage() {
 
             </div>
 
-            <button className="water-button" onClick={() => {}}>
+            <button className="water-button" onClick={handleWater}>
                 💧 Vann planten nå
             </button>
 
