@@ -537,3 +537,26 @@ textarea {
     font-size: 20px;
     color: #ccc;
 }
+
+/* popup */
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.popup-header h3 {
+    margin: 0;
+}
+
+.popup-close {
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+}
+
+.popup-close:hover {
+    color: #2B3A2F;
+}

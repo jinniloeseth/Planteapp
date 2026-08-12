@@ -68,7 +68,7 @@ function WateringPage() {
 
         return (
             <div key={plant.id} className="watering-card">
-                <div className="watering-card-info" onClick={() => navigate(`/plant/${plant.id}`)}>
+                <div className="watering-card-info">
                     <h3>{plant.name || plant.species}</h3>
                     <p style={{ color: status.color }}>{status.label}</p>
                 </div>

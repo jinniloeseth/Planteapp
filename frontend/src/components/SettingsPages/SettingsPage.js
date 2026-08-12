@@ -64,16 +64,21 @@ function SettingsPage() {
                 </div>
             </div>
 
+
             {/* Popup */}
             {showPlantSettings && (
                 <div className="popup-overlay" onClick={() => setShowPlantSettings(false)}>
                     <div className="popup" onClick={(e) => e.stopPropagation()}>
-                        <h3>Planteinnstillinger</h3>
+                        
+                        <div className="popup-header">
+                            <h3>Planteinnstillinger</h3>
+                            <span className="popup-close" onClick={() => setShowPlantSettings(false)}>✕</span>
+                        </div>
+
                         <p style={{ fontSize: "13px", color: "#888", margin: "0 0 16px 0" }}>
                             Velg hvilken informasjon som vises på plantene dine.
                         </p>
 
-                        {/* Mandatory felt */}
                         <p className="options-section-label">Alltid aktivert</p>
                         {["Art", "Vanning"].map((label) => (
                             <div key={label} className="option-item option-locked">
@@ -84,7 +89,6 @@ function SettingsPage() {
                             </div>
                         ))}
 
-                        {/* Valgfrie felt */}
                         <p className="options-section-label" style={{ marginTop: "16px" }}>Valgfritt</p>
                         {Object.entries(userSettings).map(([field, enabled]) => (
                             <div key={field} className="option-item" onClick={() => toggleField(field)}>
