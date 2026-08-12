@@ -54,16 +54,21 @@ namespace backend.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Notes")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime?>("PurchaseDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<int?>("SpeciesId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("WateringIntervalDays")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -98,22 +103,68 @@ namespace backend.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("backend.Models.UserSettings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ShowLocation")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ShowName")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ShowNotes")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ShowPurchaseDate")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserSettings");
+                });
+
             modelBuilder.Entity("backend.Models.Plant", b =>
                 {
                     b.HasOne("Species", "Species")
                         .WithMany()
                         .HasForeignKey("SpeciesId");
 
-                    b.HasOne("backend.Models.User", null)
+                    b.HasOne("backend.Models.User", "User")
                         .WithMany("Plants")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Species");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("backend.Models.UserSettings", b =>
+                {
+                    b.HasOne("backend.Models.User", "User")
+                        .WithOne("Settings")
+                        .HasForeignKey("backend.Models.UserSettings", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("backend.Models.User", b =>
                 {
                     b.Navigation("Plants");
+
+                    b.Navigation("Settings");
                 });
 #pragma warning restore 612, 618
         }

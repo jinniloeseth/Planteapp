@@ -9,6 +9,7 @@ namespace backend.Data
 
         public DbSet<Plant> Plants { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<Species> Species { get; set; }
     }
 }
