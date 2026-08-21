@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { updateUserSettings, getUserSettings } from "../../services/userSettingsService";
+import { getUser } from "../../services/userService";
 
 function SettingsPage() {
     const navigate = useNavigate();
@@ -8,15 +10,35 @@ function SettingsPage() {
 
     const [showPlantSettings, setShowPlantSettings] = useState(false);
     const [editingName, setEditingName] = useState(false);
-    const [name, setName] = useState("Janni");
+    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
 
     // Dummy UserSettings - hentes fra backend senere
     const [userSettings, setUserSettings] = useState({
-        showName: true,
+        showName: false,
         showLocation: false,
         showPurchaseDate: false,
         showNotes: false,
     });
+
+    useEffect(() => {
+        const userId = localStorage.getItem("userId");
+        if (userId) {
+            getUser(userId).then(data => {
+                console.log("User data:", data);
+                setName(data.name);
+                setUsername(data.username);
+            });
+            getUserSettings(userId).then(data => {
+                setUserSettings({
+                    showName: data.showName,
+                    showLocation: data.showLocation,
+                    showPurchaseDate: data.showPurchaseDate,
+                    showNotes: data.showNotes,
+                });
+            });
+        }
+    }, []);
 
     const fieldLabels = {
         showName: "Navn",
@@ -27,6 +49,18 @@ function SettingsPage() {
 
     const toggleField = (field) => {
         setUserSettings({ ...userSettings, [field]: !userSettings[field] });
+    };
+
+    const handleSaveSettings = async () => {
+        const userId = localStorage.getItem("userId");
+        if (userId) {
+            await updateUserSettings(userId, {
+                id: parseInt(userId),
+                userId: parseInt(userId),
+                ...userSettings
+            });
+        }
+        setShowPlantSettings(false);
     };
 
     return (
@@ -52,7 +86,7 @@ function SettingsPage() {
                             <span className="settings-edit-link" onClick={() => setEditingName(true)}>Endre</span>
                         </div>
                     )}
-                    <p className="settings-username">@janni</p>
+                    <p className="settings-username">@{username}</p>
                 </div>
             </div>
 
@@ -99,7 +133,7 @@ function SettingsPage() {
                             </div>
                         ))}
 
-                        <button style={{ marginTop: "16px" }} onClick={() => setShowPlantSettings(false)}>
+                        <button style={{ marginTop: "16px" }} onClick={handleSaveSettings}>
                             Lagre
                         </button>
                     </div>

@@ -42,7 +42,7 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Plant>> CreatePlant(Plant plant)
         {
-            plant.CreatedAt = DateTime.UtcNow;
+            plant.CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow);
             _context.Plants.Add(plant);
             await _context.SaveChangesAsync();
             return Ok(plant);
@@ -75,7 +75,7 @@ namespace backend.Controllers
         {
             var plant = await _context.Plants.FindAsync(id);
             if (plant == null) return NotFound();
-            plant.LastWatered = DateTime.UtcNow;
+            plant.LastWatered = DateOnly.FromDateTime(DateTime.UtcNow);
             await _context.SaveChangesAsync();
             return NoContent();
         }

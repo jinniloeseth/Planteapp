@@ -6,12 +6,12 @@ namespace backend.Models
         public string? Name { get; set; }
         public string? Location { get; set; }
         public string? Notes { get; set; }
-        public DateTime? LastWatered { get; set; }
-        public DateTime? PurchaseDate { get; set; }
+        public DateOnly? LastWatered { get; set; }
+        public DateOnly? PurchaseDate { get; set; }
+        public DateOnly CreatedAt { get; set; } = DateOnly.FromDateTime(DateTime.UtcNow);
         public int WateringIntervalDays { get; set; } = 0;
         public int? SpeciesId { get; set; }
         public Species? Species { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Kobling til bruker
         public int UserId { get; set; }

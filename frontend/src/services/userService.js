@@ -17,3 +17,8 @@ export const loginUser = async (user) => {
     });
     return response.json();
 };
+
+export const getUser = async (userId) => {
+    const response = await fetch(`${BASE_URL}/user/${userId}`);
+    return response.json();
+};
